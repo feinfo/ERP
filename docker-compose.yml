@@ -9,7 +9,7 @@ services:
       - "${APP_PORT:-8080}:80"
     volumes:
       - ./app:/var/www/html
-    command: sh -c "composer install --no-dev --optimize-autoloader && apache2-foreground"
+    command: sh -c "composer install --no-dev --optimize-autoloader --no-scripts && apache2-foreground"
     depends_on:
         - db
     env_file:

@@ -1,17 +1,23 @@
 FROM php:7.4-apache
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Instala extensões e utilitários necessários
+RUN apt-get update && apt-get install -y \
+    unzip \
+    zip \
+    git \
+    libzip-dev \
+    && docker-php-ext-install zip pdo pdo_mysql \
+    && a2enmod rewrite
 
-# Ativa o mod_rewrite
-RUN a2enmod rewrite
+# Instala o Composer
+COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 
-# Substitui a configuração padrão do Apache pelo nosso apache.conf
-COPY ./docker/apache/apache.conf /etc/apache2/sites-available/000-default.conf
+# Copia os arquivos do projeto
+COPY . /var/www/html
 
-# Copia os arquivos do app para o container
-COPY ./app /var/www/html
-
+# Ajusta permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-EXPOSE 80
+# Instala dependências via composer (no build)
+RUN cd /var/www/html && composer install --no-dev --optimize-autoloader

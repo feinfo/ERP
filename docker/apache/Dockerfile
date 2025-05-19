@@ -20,4 +20,4 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
 # Instala dependências via composer (no build)
-RUN cd /var/www/html && composer install --no-dev --optimize-autoloader
+# RUN cd /var/www/html && composer install --no-dev --optimize-autoloader

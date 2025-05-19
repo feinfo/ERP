@@ -1,0 +1,22 @@
+# CodeIgniter
+application/logs/
+application/cache/
+.env
+/app/.env
+
+# Vendor e Composer
+vendor/
+composer.lock
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Docker
+docker/mysql/data/

@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     git \
     nano \
     libzip-dev \
-    && docker-php-ext-install pdo pdo_mysql zip \
+    && docker-php-ext-install pdo pdo_mysql mysqli zip \
     && a2enmod rewrite
 
 # Sobrescreve a configuração padrão do Apache

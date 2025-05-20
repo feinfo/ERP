@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && a2enmod rewrite
 
 # Sobrescreve a configuração padrão do Apache
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
+COPY docker/apache/apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Instala Composer
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer

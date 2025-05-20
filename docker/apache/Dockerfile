@@ -1,23 +1,17 @@
 FROM php:7.4-apache
 
-# Instala extensões e utilitários necessários
+# Instala dependências essenciais
 RUN apt-get update && apt-get install -y \
     unzip \
     zip \
     git \
+    nano \
     libzip-dev \
-    && docker-php-ext-install zip pdo pdo_mysql \
+    && docker-php-ext-install pdo pdo_mysql zip \
     && a2enmod rewrite
 
-# Instala o Composer
+# Sobrescreve a configuração padrão do Apache
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
+# Instala Composer
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
-
-# Copia os arquivos do projeto
-COPY . /var/www/html
-
-# Ajusta permissões
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
-
-# Instala dependências via composer (no build)
-# RUN cd /var/www/html && composer install --no-dev --optimize-autoloader

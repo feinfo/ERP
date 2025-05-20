@@ -1,3 +1,5 @@
+FROM composer:2.5 AS composer
+
 FROM php:7.4-apache
 
 # Instala dependências essenciais
@@ -14,4 +16,8 @@ RUN apt-get update && apt-get install -y \
 COPY docker/apache/apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Instala Composer
-COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
+# (Opcional) Ajuste de permissões
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html

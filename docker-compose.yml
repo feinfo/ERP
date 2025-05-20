@@ -5,10 +5,10 @@ services:
     build:
       context: .
       dockerfile: docker/apache/Dockerfile
-    ports:
-      - "80:80"
     volumes:
       - ./app:/var/www/html
+    expose:
+      - "80" # usa expose para Nginx acessar internamente
     command: sh -c "composer install --no-dev --optimize-autoloader --no-scripts && apache2-foreground"
 
   db:
@@ -27,6 +27,30 @@ services:
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
       - .env
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    depends_on:
+      - web
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    entrypoint: >
+      sh -c "certbot certonly --webroot --webroot-path=/var/www/certbot
+      --email seu-email@techbuilders.com.br --agree-tos --no-eff-email
+      -d techbuilders.com.br -d www.techbuilders.com.br"
 
 volumes:
   mysql_data:

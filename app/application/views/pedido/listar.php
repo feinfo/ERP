@@ -1,7 +1,10 @@
 <div class="container mt-5">
-    <h2>Pedidos Realizados</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Pedidos Realizados</h2>
+        <!-- Se houver botão de novo pedido, coloque aqui -->
+    </div>
     <div class="table-responsive">
-        <table class="table table-bordered mt-3">
+        <table class="table table-bordered w-100 mt-3">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -28,4 +31,5 @@
             </tbody>
         </table>
     </div>
+    <!-- Se houver ação de novo pedido, botão flutuante para mobile -->
 </div>

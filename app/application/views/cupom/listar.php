@@ -1,15 +1,10 @@
 <div class="container mt-5">
-  <h2 class="mb-3">Cupons</h2>
-
-  <?php if ($this->session->flashdata('success')): ?>
-    <div class="alert alert-success"> <?= $this->session->flashdata('success') ?> </div>
-  <?php elseif ($this->session->flashdata('error')): ?>
-    <div class="alert alert-danger"> <?= $this->session->flashdata('error') ?> </div>
-  <?php endif; ?>
-
-  <a href="<?= base_url('cupom/form') ?>" class="btn btn-primary mb-3">Novo Cupom</a>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-3">Cupons</h2>
+    <a href="<?= base_url('cupom/form') ?>" class="btn btn-outline-primary d-none d-md-block">Novo Cupom</a>
+  </div>
   <div class="table-responsive">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered w-100">
       <thead>
         <tr>
           <th>ID</th>
@@ -39,4 +34,7 @@
       </tbody>
     </table>
   </div>
+  <a href="<?= base_url('cupom/form') ?>" class="btn btn-outline-primary btn-lg rounded-circle position-fixed d-md-none" style="bottom: 24px; right: 24px; z-index: 1050; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+    <i class="bi bi-plus"></i>
+  </a>
 </div>

@@ -23,68 +23,50 @@
   </div>
 </div>
 <div class="container mt-5">
-
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Produtos</h2>
-        <a href="<?= base_url('produto/form') ?>" class="btn btn-primary">Novo Produto</a>
+        <a href="<?= base_url('produto/form') ?>" class="btn btn-outline-primary d-none d-md-block">Novo Produto</a>
     </div>
-
-    <form class="mb-3" method="get" action="<?= base_url('produto') ?>">
-        <div class="input-group">
-            <input type="text" name="busca" class="form-control" placeholder="Buscar por nome..." value="<?= htmlspecialchars($busca ?? '') ?>">
-            <button type="submit" class="btn btn-outline-secondary">Buscar</button>
-        </div>
-    </form>
-
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Estoque Total</th>
-                <th>Variações</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($produtos as $p): ?>
-            <tr>
-                <td><?= $p->id ?></td>
-                <td><?= $p->nome ?></td>
-                <td>R$ <?= number_format($p->preco, 2, ',', '.') ?></td>
-                <td><?= $p->estoque_total ?> un</td>
-                <td>
-                    <?php if (!empty($p->variacoes)): ?>
-                        <ul class="mb-0">
-                            <?php foreach ($p->variacoes as $v): ?>
-                                <li>
-                                    <?= $v->descricao ?> (<?= $v->estoque ?> un)
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php else: ?>
-                        <em>Sem variações</em>
-                    <?php endif; ?>
-                </td>
-                <td>
-                    <a href="<?= base_url("produto/form/$p->id") ?>" class="btn btn-sm btn-warning" title="Editar">
-                        <i class="bi bi-pencil"></i>
-                    </a>
-                    <a href="<?= base_url("produto/excluir/$p->id") ?>" class="btn btn-sm btn-danger" title="Excluir" onclick="return confirm('Deseja realmente excluir?')">
-                        <i class="bi bi-trash"></i>
-                    </a>
-                    <button class="btn btn-sm btn-info btn-visualizar" data-id="<?= $p->id ?>" title="Visualizar">
-                        <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" onclick="carregarVariacoes(<?= $p->id ?>)" class="btn btn-sm btn-success" title="Adicionar ao carrinho">
-                        <i class="bi bi-cart-plus"></i>
-                    </button>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered w-100">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Estoque Total</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($produtos as $p): ?>
+                    <tr>
+                        <td><?= $p->id ?></td>
+                        <td><?= $p->nome ?></td>
+                        <td>R$ <?= number_format($p->preco, 2, ',', '.') ?></td>
+                        <td><?= $p->estoque_total ?></td>
+                        <td>
+                            <a href="<?= base_url("produto/form/{$p->id}") ?>" class="btn btn-warning btn-sm" title="Editar">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="<?= base_url("produto/excluir/$p->id") ?>" class="btn btn-danger btn-sm" title="Excluir" onclick="return confirm('Deseja realmente excluir?')">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                            <button class="btn btn-sm btn-info btn-visualizar" data-id="<?= $p->id ?>" title="Visualizar">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button type="button" onclick="carregarVariacoes(<?= $p->id ?>)" class="btn btn-sm btn-success" title="Adicionar ao carrinho">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <a href="<?= base_url('produto/form') ?>" class="btn btn-outline-primary btn-lg rounded-circle position-fixed d-md-none" style="bottom: 24px; right: 24px; z-index: 1050; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+        <i class="bi bi-plus"></i>
+    </a>
 </div>
 
 <?= $links ?? '' ?>

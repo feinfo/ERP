@@ -10,6 +10,8 @@ services:
     expose:
       - "80" # usa expose para Nginx acessar internamente
     command: sh -c "composer install --no-dev --optimize-autoloader --no-scripts && apache2-foreground"
+    env_file:
+      - .env
 
   db:
     image: mysql:5.7

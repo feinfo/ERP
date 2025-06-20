@@ -137,7 +137,7 @@ document.getElementById('formAddCarrinho').addEventListener('submit', function (
         body: formData
     })
     .then(res => res.json())
-    .then data => {
+    .then(data => {
         if (data.status) {
             Swal.fire({
                 icon: 'success',

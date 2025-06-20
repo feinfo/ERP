@@ -1,0 +1,21 @@
+# Arquivos de ambiente e credenciais
+.env
+
+# Dependências do Composer
+/vendor/
+
+# Diretórios de cache e logs
+app/application/cache/
+app/application/logs/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Banco de dados local
+mysql_data/
+
+# Outros arquivos sensíveis
+*.pem
+*.key
+*.crt

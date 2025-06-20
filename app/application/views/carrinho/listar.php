@@ -135,11 +135,8 @@
 
             <div class="mt-4 d-flex justify-content-between align-items-center">
                 <a href="<?= base_url('produto') ?>" class="btn btn-secondary">Continuar comprando</a>
-                <button type="submit" class="btn btn-success d-none d-md-inline">Finalizar pedido</button>
+                <button type="submit" class="btn btn-success">Finalizar pedido</button>
             </div>
-            <button type="submit" class="btn btn-success btn-lg rounded-circle position-fixed d-md-none" style="bottom: 24px; right: 24px; z-index: 1050; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-                <i class="bi bi-check"></i>
-            </button>
         </form>
     <?php endif; ?>
 </div>

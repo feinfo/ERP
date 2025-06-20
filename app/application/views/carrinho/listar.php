@@ -6,32 +6,34 @@
         <a href="<?= base_url('produto') ?>" class="btn btn-primary">Continuar comprando</a>
     <?php else: ?>
         <form method="post" action="<?= base_url('pedido/finalizar') ?>" id="formEndereco">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Variação</th>
-                        <th>Quantidade</th>
-                        <th>Preço Unitário</th>
-                        <th>Subtotal</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($carrinho as $id => $item): ?>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td><?= $item['nome'] ?></td>
-                            <td><?= $item['descricao'] ?></td>
-                            <td><?= $item['quantidade'] ?></td>
-                            <td>R$ <?= number_format($item['preco_unitario'], 2, ',', '.') ?></td>
-                            <td>R$ <?= number_format($item['quantidade'] * $item['preco_unitario'], 2, ',', '.') ?></td>
-                            <td>
-                                <a href="<?= base_url("carrinho/remover/$id") ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remover item do carrinho?')">Remover</a>
-                            </td>
+                            <th>Produto</th>
+                            <th>Variação</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário</th>
+                            <th>Subtotal</th>
+                            <th>Ações</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($carrinho as $id => $item): ?>
+                            <tr>
+                                <td><?= $item['nome'] ?></td>
+                                <td><?= $item['descricao'] ?></td>
+                                <td><?= $item['quantidade'] ?></td>
+                                <td>R$ <?= number_format($item['preco_unitario'], 2, ',', '.') ?></td>
+                                <td>R$ <?= number_format($item['quantidade'] * $item['preco_unitario'], 2, ',', '.') ?></td>
+                                <td>
+                                    <a href="<?= base_url("carrinho/remover/$id") ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remover item do carrinho?')">Remover</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="card mt-4">
                 <div class="card-header" data-bs-toggle="collapse" data-bs-target="#dadosEntrega" aria-expanded="true" aria-controls="dadosEntrega">

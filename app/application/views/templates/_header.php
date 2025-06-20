@@ -65,48 +65,51 @@
 
         @media (max-width: 767.98px) {
             .sidebar {
+                display: none !important;
+            }
+            .sidebar.show-mobile {
+                display: flex !important;
                 position: fixed;
                 left: 0;
+                top: 0;
                 bottom: 0;
-                top: auto;
-                width: 100vw;
-                height: 60px;
-                min-height: 0;
+                width: 80vw;
+                max-width: 320px;
+                height: 100vh;
+                min-height: 100vh;
                 background-color: #343a40;
-                flex-direction: row !important;
-                z-index: 1050;
+                flex-direction: column !important;
+                z-index: 2000;
                 padding: 0;
-                overflow-x: auto;
-                border-top: 1px solid #222;
-                border-right: none;
-                border-bottom: none;
-                border-left: none;
-                box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+                overflow-y: auto;
+                box-shadow: 2px 0 8px rgba(0,0,0,0.18);
+                border-top: none;
             }
             .sidebar .nav {
-                flex-direction: row !important;
-                width: 100vw;
-                align-items: center;
-                justify-content: space-between;
-                margin-top: 0 !important;
+                flex-direction: column !important;
+                width: 100%;
+                align-items: flex-start;
+                justify-content: flex-start;
+                margin-top: 60px !important;
             }
             .sidebar .nav-link {
-                padding: 0.5rem 0.5rem;
+                padding: 0.8rem 1.2rem;
                 font-size: 1.2rem;
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                width: 100%;
             }
             .sidebar .nav-link .text {
-                display: none;
+                display: inline !important;
             }
             .toggle-btn {
                 display: none;
             }
             .main-content {
                 margin-left: 0 !important;
-                margin-bottom: 60px;
+                margin-bottom: 0;
                 margin-top: 0;
                 padding: 5px 2px 2px 2px;
             }
@@ -117,7 +120,7 @@
                 padding-right: 2px !important;
             }
             .main-content {
-                margin-bottom: 60px;
+                margin-bottom: 0;
                 margin-top: 0;
                 padding: 1px;
             }
@@ -129,9 +132,9 @@
             .floating-menu-btn {
                 display: block;
                 position: fixed;
-                bottom: 70px;
+                bottom: 20px;
                 right: 20px;
-                z-index: 2000;
+                z-index: 3000;
                 background: #343a40;
                 color: #fff;
                 border: none;
@@ -146,23 +149,12 @@
             }
         }
         @media (max-width: 767.98px) {
-            #sidebar.show-mobile {
-                height: 100vh !important;
-                min-height: 100vh !important;
-                top: 0 !important;
-                bottom: 0 !important;
-                background: #343a40;
-                flex-direction: column !important;
-                transition: height 0.3s;
-                box-shadow: 0 0 0 100vw rgba(0,0,0,0.4);
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
-            #sidebar.show-mobile .nav {
-                flex-direction: column !important;
-                width: 100%;
-                margin-top: 60px !important;
-            }
-            #sidebar.show-mobile .nav-link .text {
-                display: inline !important;
+            table.table {
+                min-width: 600px;
             }
         }
     </style>

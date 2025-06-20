@@ -1,13 +1,12 @@
 <?php
     $perfilLogado = $this->session->userdata('usuario_perfil_id');
     $ehAdmin = $perfilLogado == 1; 
-    $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http';
 ?>
 <div class="container-fluid mt-4">
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <h2 class="mt-3"><?= isset($usuario) ? 'Editar' : 'Novo' ?> Usuário</h2>
-            <form method="post" action="<?= site_url('usuario/salvar', $protocol) ?>">
+            <form method="post" action="<?= site_url('usuario/salvar') ?>">
                 <?php if (isset($usuario)): ?>
                     <input type="hidden" name="id" value="<?= $usuario->id ?>">
                 <?php endif; ?>

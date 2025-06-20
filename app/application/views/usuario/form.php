@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <h2 class="mt-3"><?= isset($usuario) ? 'Editar' : 'Novo' ?> Usuário</h2>
-            <form method="post" action="<?= site_url('usuario/salvar') ?>">
+            <form method="post" action="<?= site_url('usuario/salvar', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : null) ?>">
                 <input type="hidden" name="id" value="<?= isset($usuario) ? $usuario->id : '' ?>">
 
                 <div class="mb-3">

@@ -28,7 +28,7 @@ CREATE TABLE estoque (
 
 CREATE TABLE pedidos (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  status_id INT NOT NULL DEFAULT 1
+  status_id INT NOT NULL DEFAULT 1,
   subtotal DECIMAL(10,2),
   frete DECIMAL(10,2),
   total DECIMAL(10,2),

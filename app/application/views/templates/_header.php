@@ -113,6 +113,16 @@
                 margin-top: 0;
                 padding: 5px 2px 2px 2px;
             }
+            .table-responsive {
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: -12px;
+                margin-right: -12px;
+            }
+            table.table {
+                min-width: 600px;
+                width: 100%;
+            }
         }
         @media (max-width: 575.98px) {
             .container, .container-fluid {
@@ -130,7 +140,7 @@
         }
         @media (max-width: 767.98px) {
             .floating-menu-btn {
-                display: block;
+                display: flex;
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
@@ -145,16 +155,6 @@
                 font-size: 2rem;
                 align-items: center;
                 justify-content: center;
-                display: flex;
-            }
-        }
-        @media (max-width: 767.98px) {
-            .table-responsive {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            table.table {
-                min-width: 600px;
             }
         }
     </style>

@@ -61,6 +61,53 @@
         .sidebar.collapsed ~ .main-content {
             margin-left: 60px;
         }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                position: fixed;
+                width: 100vw;
+                min-height: 60px;
+                height: 60px;
+                flex-direction: row !important;
+                z-index: 1050;
+                left: 0;
+                top: 0;
+                padding: 0 10px;
+                overflow-x: auto;
+            }
+            .sidebar .nav {
+                flex-direction: row !important;
+                width: 100vw;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .sidebar .nav-link {
+                padding: 0.5rem 0.7rem;
+                font-size: 1.1rem;
+            }
+            .sidebar .nav-link .text {
+                display: none;
+            }
+            .toggle-btn {
+                top: 10px;
+                right: 10px;
+            }
+            .main-content {
+                margin-left: 0 !important;
+                margin-top: 70px;
+                padding: 10px;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .container, .container-fluid {
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+            }
+            .main-content {
+                margin-top: 60px;
+                padding: 2px;
+            }
+        }
     </style>
 
     <script>

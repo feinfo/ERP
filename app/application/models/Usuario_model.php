@@ -20,7 +20,9 @@ class Usuario_model extends CI_Model {
     }
 
     public function atualizar($id, $dados) {
-        return $this->db->where('id', $id)->update($this->tabela, $dados);
+        $this->db->where('id', $id);
+        $this->db->set($dados);
+        return $this->db->update($this->tabela);
     }
 
     public function excluir($id) {

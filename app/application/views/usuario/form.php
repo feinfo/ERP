@@ -8,7 +8,9 @@
         <div class="col-12 col-md-8 col-lg-6">
             <h2 class="mt-3"><?= isset($usuario) ? 'Editar' : 'Novo' ?> Usuário</h2>
             <form method="post" action="<?= site_url('usuario/salvar', $protocol) ?>">
-                <input type="hidden" name="id" value="<?= isset($usuario) ? $usuario->id : '' ?>">
+                <?php if (isset($usuario)): ?>
+                    <input type="hidden" name="id" value="<?= $usuario->id ?>">
+                <?php endif; ?>
 
                 <div class="mb-3">
                     <label>Nome</label>

@@ -72,7 +72,7 @@
                 z-index: 1050;
                 left: 0;
                 top: 0;
-                padding: 0 10px;
+                padding: 0 0px;
                 overflow-x: auto;
             }
             .sidebar .nav {
@@ -82,8 +82,8 @@
                 justify-content: space-between;
             }
             .sidebar .nav-link {
-                padding: 0.5rem 0.7rem;
-                font-size: 1.1rem;
+                padding: 0.5rem 0.5rem;
+                font-size: 1rem;
             }
             .sidebar .nav-link .text {
                 display: none;
@@ -94,18 +94,18 @@
             }
             .main-content {
                 margin-left: 0 !important;
-                margin-top: 70px;
-                padding: 10px;
+                margin-top: 60px;
+                padding: 5px 2px 2px 2px;
             }
         }
         @media (max-width: 575.98px) {
             .container, .container-fluid {
-                padding-left: 5px !important;
-                padding-right: 5px !important;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
             }
             .main-content {
-                margin-top: 60px;
-                padding: 2px;
+                margin-top: 55px;
+                padding: 1px;
             }
         }
     </style>

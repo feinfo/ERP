@@ -25,7 +25,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Produtos</h2>
-        <a href="<?= base_url('produto/form') ?>" class="btn btn-outline-primary d-none d-md-block">Novo Produto</a>
+        <a href="<?= base_url('produto/form') ?>" class="btn btn-outline-primary">Novo Produto</a>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-bordered w-100">
@@ -64,9 +64,6 @@
             </tbody>
         </table>
     </div>
-    <a href="<?= base_url('produto/form') ?>" class="btn btn-outline-primary btn-lg rounded-circle position-fixed d-md-none" style="bottom: 24px; right: 24px; z-index: 1050; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-        <i class="bi bi-plus"></i>
-    </a>
 </div>
 
 <?= $links ?? '' ?>
@@ -140,7 +137,7 @@ document.getElementById('formAddCarrinho').addEventListener('submit', function (
         body: formData
     })
     .then(res => res.json())
-    .then(data => {
+    .then data => {
         if (data.status) {
             Swal.fire({
                 icon: 'success',

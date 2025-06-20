@@ -26,6 +26,18 @@ CREATE TABLE estoque (
   FOREIGN KEY (produto_id) REFERENCES produtos(id)
 );
 
+CREATE TABLE pedido_status (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+
+INSERT INTO pedido_status (nome) VALUES
+('Pendente'),
+('Aguardando Entrega'),
+('Em Transporte'),
+('Entregue'),
+('Cancelado');
+
 CREATE TABLE pedidos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   status_id INT NOT NULL DEFAULT 1,
@@ -69,21 +81,8 @@ CREATE TABLE enderecos_entrega (
     localidade VARCHAR(100) NOT NULL,
     uf CHAR(2) NOT NULL,
     dt_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
     FOREIGN KEY (pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE
 );
-
-CREATE TABLE pedido_status (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL
-);
-
-INSERT INTO pedido_status (nome) VALUES
-('Pendente'),
-('Aguardando Entrega'),
-('Em Transporte'),
-('Entregue'),
-('Cancelado');
 
 CREATE TABLE usuario_perfis (
     id INT AUTO_INCREMENT PRIMARY KEY,
